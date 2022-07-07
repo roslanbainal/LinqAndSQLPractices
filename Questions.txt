@@ -1,0 +1,17 @@
+1. Write a SQL Query to fetch all the duplicate records in a table.
+	Table Name: USERS
+	Note: Record is considered duplicate if a user name is present more than once.
+	Approach: Partition the data based on user name and then give a row number to each of the partitioned user name. If a user name exists more than once then it would have multiple row numbers. Using the row number which is other than 1, we can identify the duplicate records.
+
+2. Write a SQL query to fetch the second last record from employee table.
+	Table Name: EMPLOYEE
+	Approach: Using window function sort the data in descending order based on employee id. Provide a row number to each of the record and fetch the record having row number as 2.
+
+3. Write a SQL query to display only the details of employees who either earn the highest salary or the lowest salary in each department from the employee table.
+	Table Name: EMPLOYEE
+	Approach: Write a sub query which will partition the data based on each department and then identify the record with maximum and minimum salary for each of the partitioned department. Finally, from the main query fetch only the data which matches the maximum and minimum salary returned from the sub query.
+
+4. From the doctors table, fetch the details of doctors who work in the same hospital but in different specialty.
+	Table Name: DOCTORS
+	Approach: Use self join to solve this problem. Self join is when you join a table to itself.
+	Additional Query: Write SQL query to fetch the doctors who work in same hospital irrespective of their specialty.

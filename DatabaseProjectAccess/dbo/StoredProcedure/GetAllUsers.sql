@@ -1,0 +1,4 @@
+﻿CREATE PROCEDURE [dbo].[GetAllUsers]
+AS
+	SELECT * FROM Users
+RETURN 
