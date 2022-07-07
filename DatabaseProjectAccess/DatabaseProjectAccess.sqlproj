@@ -74,6 +74,9 @@
     <Build Include="dbo\Tables\Login_Details.sql" />
     <Build Include="dbo\StoredProcedure\GetAllLoginDetails.sql" />
     <Build Include="dbo\StoredProcedure\GetUserLoginMoreThen3Times.sql" />
+    <Build Include="dbo\Tables\Students.sql" />
+    <Build Include="dbo\StoredProcedure\GetInterchangeAdjacentStudentName.sql" />
+    <Build Include="dbo\StoredProcedure\GetAllStudents.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script.PostDeployment.sql" />

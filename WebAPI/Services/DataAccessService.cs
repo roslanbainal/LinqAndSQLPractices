@@ -232,5 +232,64 @@ namespace WebAPI.Services
 
             return null;
         }
+
+        // TODO : Question 6 - From the students table, write a SQL query to interchange the adjacent student names.
+        public StudentInterchangeAdjacentStudentNamesDTO StudentInterchangeAdjacentStudentNames()
+        {
+            IDbConnection conn = new SqlConnection(CONN_STRING);
+
+            var result = conn.Query<Students>("GetAllStudents", commandType: CommandType.StoredProcedure);
+
+            if (result.Any())
+            {
+
+                var rawSQL = conn.Query<StudentDTO>("GetInterchangeAdjacentStudentName", commandType: CommandType.StoredProcedure);
+
+                return new StudentInterchangeAdjacentStudentNamesDTO
+                {
+                    LINQResult = StudentWithNewName(result.ToList()),
+                    SQLResult = rawSQL
+                };
+            }
+
+            return null;
+        }
+
+        private static List<StudentDTO> StudentWithNewName(List<Students> students)
+        {
+            List<StudentDTO> result = new List<StudentDTO>();
+
+            for (int i = 0; i < students.Count; i++)
+            {
+                var student = new StudentDTO();
+                student.Id = students[i].Id;
+                student.Student_Name = students[i].Student_Name;
+
+                //last row set same name
+                if ((i + 1) == students.Count)
+                {
+                    student.New_Student_Name = student.Student_Name;
+                }
+                else
+                {
+                    //odd number
+                    if (students[i].Id % 2 != 0)
+                    {
+                        student.New_Student_Name = students[i + 1].Student_Name;
+                    }
+                    //even number
+                    else if (students[i].Id % 2 == 0)
+                    {
+                        student.New_Student_Name = students[i - 1].Student_Name;
+                    }
+
+                }
+
+                result.Add(student);
+
+            }
+
+            return result;
+        }
     }
 }

@@ -46,5 +46,10 @@ namespace WebAPI.Controllers
             return Ok(_dataAccessService.UserLoginMoreThen3Times());
         }
 
+        [HttpGet("StudentInterchangeAdjacentStudentNames")]
+        public IActionResult StudentInterchangeAdjacentStudentNames()
+        {
+            return Ok(_dataAccessService.StudentInterchangeAdjacentStudentNames());
+        }
     }
 }
