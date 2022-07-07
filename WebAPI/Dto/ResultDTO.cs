@@ -69,4 +69,20 @@ namespace WebAPI.Dto
         public IEnumerable<RepeatedNamesDTO> SQLResult { get; set; }
     }
     #endregion
+
+    #region StudentDTO
+    public class StudentDTO
+    {
+        public int Id { get; set; }
+        public string Student_Name { get; set; }
+        public string New_Student_Name { get; set; }
+    }
+
+    public class StudentInterchangeAdjacentStudentNamesDTO
+    {
+        public IEnumerable<StudentDTO> LINQResult { get; set; }
+        public IEnumerable<StudentDTO> SQLResult { get; set; }
+    }
+
+    #endregion
 }

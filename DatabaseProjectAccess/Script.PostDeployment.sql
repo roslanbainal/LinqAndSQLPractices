@@ -64,3 +64,13 @@ insert into login_details values
 (112, 'James', CURRENT_TIMESTAMP+5),
 (113, 'James', CURRENT_TIMESTAMP+6);
 end
+
+if not exists(select 1 from dbo.Students)
+begin
+	insert into students values
+	(1, 'James'),
+	(2, 'Michael'),
+	(3, 'George'),
+	(4, 'Stewart'),
+	(5, 'Robin');
+end
